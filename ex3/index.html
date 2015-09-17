@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Ex3</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="Show Server Time">    
+<div id="servertime"> </div>
+
+<script>
+$(document).ready(function () {
+
+  $('input').click(function(){
+
+    $.get("https://hb-server-time.herokuapp.com/", function( data ) {
+ 
+      $("#servertime").text(data);
+    })
+    .fail(function() {
+      alert("There was an error");
+    });
+  });
+});
+</script>
+</body>
+</html>

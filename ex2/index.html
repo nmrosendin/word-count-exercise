@@ -1,0 +1,33 @@
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+    <button>Show Server Time</button>
+    <div id="serverTime"></div>
+
+<script>
+var response = function() {
+
+var xmlh;
+xmlh = new XMLHttpRequest();
+xmlh.onreadystatechange = function(){
+    if (xmlh.readyState === 4){
+        if(xmlh.status === 200){
+            document.getElementById('serverTime').innerHTML = xmlh.responseText;
+        } else if(xmlh.status === 400){
+            alert('There was an error 400');
+        } else {
+            alert('something else other than 200 was returned');
+        }
+    }
+};
+
+xmlh.open('GET', "https://hb-server-time.herokuapp.com/", true);
+xmlh.send();
+
+};
+</script>
+</body>
+</html>
